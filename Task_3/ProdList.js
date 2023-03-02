@@ -66,7 +66,7 @@ class ProdList {
           (this.description.endsWith(descriptionParam[2]))) {
             return this.name;
       } else if ((this.name.startsWith(nameParam[2])) &&
-          (this.quantity >(+quantityParam[1][1]))) {
+          (this.quantity == (+quantityParam[1][1]))) {
             return this.name;
       } else {
           this.name = 'noMatch';
@@ -78,11 +78,11 @@ class ProdList {
 
 let productMarker = new ProdList( 'markerfd', 2, 50, 'red clored abc' );
 let productBook = new ProdList( 'lfd_moon', 258, 11, 'amazing story of abc' );
-let productPhone = new ProdList( 'iphone', 1000, 500, 'iphone 15SE model' );
 let productPencil = new ProdList( 'pencil', 10, 5000, 'black color pencil' );
 let productDisk = new ProdList( 'disfdra', 2, 5, 'movie of abc' );
+let productPhone = new ProdList( 'iphone', 1, 1, 'iphone 15SE model' );
 
-products = [productMarker, productBook, productPhone, productPencil, productDisk];
+products = [productPencil,  productMarker, productPhone, productBook, productDisk,];
 for (let i = 0; i < products.length; i++) {
   products[i].prodSelect( MATCHSTR );
   if (products[i].name == 'noMatch') {
