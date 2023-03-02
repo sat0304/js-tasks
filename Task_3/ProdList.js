@@ -64,13 +64,14 @@ class ProdList {
           (this.price == (+priceParam[1][1])) &&
           (this.quantity >(+quantityParam[1][1])) &&
           (this.description.endsWith(descriptionParam[2]))) {
-            alert(this.name);
+            return this.name;
       } else if ((this.name.startsWith(nameParam[2])) &&
           (this.quantity >(+quantityParam[1][1]))) {
-            alert(this.name);
+            return this.name;
       } else {
           this.name = 'noMatch';
-          }
+          return this.name;
+      }
     }
   }
 }
