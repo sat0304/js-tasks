@@ -1,7 +1,7 @@
 "use strict";
 
 const FIRSTNUM = '19900';
-const SECONDNUM = '990004567800123999';
+const SECONDNUM = '990099';
 const FIRSTNUM2 = '18899900';
 const SECONDNUM2 = '9901';
 
@@ -102,19 +102,53 @@ class CalculNum {
   }
 
   multTwoNumbers() {
-    let bigFirstNumber = BigInt(this.firstNumber);
-    let bigSecondNumber = BigInt(this.secondNumber);
-    let bigResult = BigInt(bigFirstNumber * bigSecondNumber);
+    let aFactor = this.reverseString(this.firstNumber);
+    let bFactor = this.reverseString(this.secondNumber);
 
-    return String(bigResult);
-  }
+    let stack = [];
+    
+    for (let i = 0; i < aFactor .length; i++) {
+      for (let j = 0; j < bFactor.length; j++) {
+          let mediumMult = aFactor [i] * bFactor[j];
+          stack[i + j] = (stack[i + j]) ? stack[i + j] + mediumMult : mediumMult;
+        }
+      }
+    
+      for (let i = 0; i < stack.length; i++) {
+        let numRank = stack[i] % 10;
+        let moveNumber = Math.floor(stack[i] / 10);
+        stack[i] = numRank;
+    
+        if (stack[i + 1])
+          stack[i + 1] += moveNumber;
+        else if (moveNumber != 0)
+          stack[i + 1] = moveNumber;
+      }
+    
+      return this.reverseString(stack);
+    }
 
   divTwoNumbers() {
-    let bigFirstNumber = BigInt(this.firstNumber);
-    let bigSecondNumber = BigInt(this.secondNumber);
-    let bigResult = BigInt(bigFirstNumber / bigSecondNumber);
+    let firstDivident = this.firstNumber ;
+    let secondDivider = this.secondNumber;
 
-    return String(bigResult);
+    let numLength = firstDivident.length;
+    let remainder = 0;
+    let quotient = '';
+    let i = 0;
+
+    while( i < numLength + 3){
+      let digit = i < numLength ? parseInt(firstDivident[i]) : 0;
+      
+      if (i == numLength){
+      quotient = quotient + '.';
+      }
+
+      quotient = quotient + Math.floor((digit + (remainder * 10)) / secondDivider);
+      remainder = (digit + (remainder * 10)) % secondDivider;
+      i++;
+  }
+  return parseFloat(quotient);
   }
 
 }
