@@ -1,0 +1,4 @@
+CREATE DATABASE movie_db;
+CREATE USER movie_user WITH ENCRYPTED PASSWORD 'Spges3spges';
+
+GRANT ALL PRIVILEGES ON DATABASE movie_db TO movie_user;
