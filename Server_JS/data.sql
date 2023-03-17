@@ -50,7 +50,7 @@ SET role movie_user;
   producer_id integer REFERENCES person(id),
   budget integer NOT NULL Default 1,
   rating numeric NOT NULL Default 1,
-  moviName text
+  movieName text
 ); 
 
 CREATE TABLE actor_movie (
