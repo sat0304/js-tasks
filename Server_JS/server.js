@@ -15,11 +15,18 @@ const os = require('os');
 
 
 const express = require('express');
+const bodyParser = require('body-parser');
 const PORT = 3000;
 const app = express(0);
 
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
 app.get('/', (req,res) => {
-    res.send('<h1>Hi world!</h1>')
+    res.json({ info: 'Node.js, Express, and Postgres API' })
 });
 app.listen(PORT, () => console.log(`Server works fine at ${PORT}`));
