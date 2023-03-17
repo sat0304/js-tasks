@@ -1,4 +1,4 @@
-const Pool = requre('pg').Pool;
+const Pool = require('pg').Pool;
 const pool = new Pool({
     user: 'movie_user',
     password: 'Spges3spges',
@@ -76,10 +76,20 @@ const getMovies = (req, res) => {
   const getGenreByName = (req, res) => {
     const description = JSON.parse(req.params)
   
-    pool.query('SELECT * FROM genre WHERE description = $1', [movieName], (error, results) => {
+    pool.query('SELECT * FROM genre WHERE description = $1', [description], (error, results) => {
       if (error) {
         throw error
       }
       res.status(200).json(results.rows)
     })
   };
+
+  module.exports = {
+    getMovies,
+    getMovieById,
+    getMovieByName,
+    getMovieByYear,
+    createGenre,
+    getGenreById,
+    getGenreByName,
+  }
