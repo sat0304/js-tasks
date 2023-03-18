@@ -19,6 +19,7 @@ app.get('/movies', db.getMovies);
 app.get('/movie/:movieName', db.getMovieByName);
 app.get('/movie/:releaseYear', db.getMovieByYear);
 app.get('/movie/:id', db.getMovieById);
+
 app.post('/genre', db.createGenre);
 app.get('/genre/:description', db.getGenreByName);
 app.get('/genre/:id', db.getGenreById);
