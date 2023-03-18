@@ -3,6 +3,7 @@ CREATE USER movie_user WITH ENCRYPTED PASSWORD 'Spges3spges';
 
 GRANT ALL PRIVILEGES ON DATABASE movie_db TO movie_user;
 SET role movie_user;
+connect movie_db;
 
  CREATE TABLE person (
   id serial PRIMARY KEY,
@@ -63,4 +64,16 @@ CREATE TABLE dub_movie (
   dub_id integer REFERENCES dub(id),
   movie_id integer REFERENCES movie(id),
   PRIMARY KEY (dub_id, movie_id)
+);
+
+ CREATE TABLE view (
+  id serial PRIMARY KEY,
+  countryName text NOT NULL,
+  number integer NOT NULL Default 1
+); 
+
+CREATE TABLE view_movie (
+  view_id integer REFERENCES view(id),
+  movie_id integer REFERENCES movie(id),
+  PRIMARY KEY (view_id, movie_id)
 );
