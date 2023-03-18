@@ -30,7 +30,7 @@ const getMovies = (req, res) => {
   };
 
   const getMovieByName = (req, res) => {
-    const movieName = JSON.parse(req.params)
+    const movieName = JSON.stringify(req.params)
   
     pool.query('SELECT * FROM movie WHERE movieName = $1', [movieName], (error, results) => {
       if (error) {
@@ -74,7 +74,7 @@ const getMovies = (req, res) => {
   };
 
   const getGenreByName = (req, res) => {
-    const description = JSON.parse(req.params)
+    const description = JSON.stringify(req.params)
   
     pool.query('SELECT * FROM genre WHERE description = $1', [description], (error, results) => {
       if (error) {

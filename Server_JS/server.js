@@ -16,12 +16,13 @@ app.get('/', (req, res) => {
   })
 
 app.get('/movies', db.getMovies);
-app.get('/movie/:id', db.getMovieById);
 app.get('/movie/:movieName', db.getMovieByName);
 app.get('/movie/:releaseYear', db.getMovieByYear);
+app.get('/movie/:id', db.getMovieById);
 app.post('/genre', db.createGenre);
-app.get('/genre/:id', db.getGenreById);
 app.get('/genre/:description', db.getGenreByName);
+app.get('/genre/:id', db.getGenreById);
+
 
 app.listen(PORT, () => console.log(`Server works fine at ${PORT}`));
 
