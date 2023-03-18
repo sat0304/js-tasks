@@ -13,7 +13,7 @@ app.use(
 
 app.get('/', (req, res) => {
     res.json({ info: 'This is movie database for learning  Node JS' })
-  })
+  });
 
 app.get('/movies', db.getMovies);
 app.get('/movie/:movieName', db.getMovieByName);
