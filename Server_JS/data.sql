@@ -1,8 +1,8 @@
 CREATE DATABASE movie_db;
-CREATE USER movie_user WITH ENCRYPTED PASSWORD 'Spges3spges';
+-- CREATE USER movie_user WITH ENCRYPTED PASSWORD 'Spges3spges';
 
-GRANT ALL PRIVILEGES ON DATABASE movie_db TO movie_user;
-SET role movie_user;
+-- GRANT ALL PRIVILEGES ON DATABASE movie_db TO movie_user;
+-- SET role movie_user;
 connect movie_db;
 
  CREATE TABLE person (
