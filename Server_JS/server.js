@@ -16,8 +16,8 @@ app.get('/', (req, res) => {
   });
 
 app.get('/movies', db.getMovies);
-app.get('/movie/:movieName', db.getMovieByName);
-app.get('/movie/:releaseYear', db.getMovieByYear);
+// app.get('/movie/:movieName', db.getMovieByName);
+// app.get('/movie/:releaseYear', db.getMovieByYear);
 app.get('/movie/:id', db.getMovieById);
 
 app.post('/genre', db.createGenre);
