@@ -64,25 +64,37 @@ const getMovies = (req, res) => {
 
   const getGenreById = (req, res) => {
     const id = parseInt(req.params.id)
+    if (isNaN(id)) {
+      const description = JSON.stringify(req.params);
+      pool.query('SELECT * FROM genre WHERE description = $1', [description], (error, results) => {
+        if (error) {
+          throw error
+        }
+        // res.status(200).json(results.rows)
+        res.status(200).json(req.params)
+      })
+    } else {
+      pool.query('SELECT * FROM genre WHERE id = $1', [id], (error, results) => {
+        if (error) {
+          throw error
+        }
+        res.status(200).json(results.rows)
+      })
+    }
   
-    pool.query('SELECT * FROM genre WHERE id = $1', [id], (error, results) => {
-      if (error) {
-        throw error
-      }
-      res.status(200).json(results.rows)
-    })
+
   };
 
-  const getGenreByName = (req, res) => {
-    const description = JSON.stringify(req.params)
+  // const getGenreByName = (req, res) => {
+  //   const description = JSON.stringify(req.params);
   
-    pool.query('SELECT * FROM genre WHERE description = $1', [description], (error, results) => {
-      if (error) {
-        throw error
-      }
-      res.status(200).json(results.rows)
-    })
-  };
+  //   pool.query('SELECT * FROM genre WHERE description = $1', [description], (error, results) => {
+  //     if (error) {
+  //       throw error
+  //     }
+  //     res.status(200).json(results.rows)
+  //   })
+  // };
 
   module.exports = {
     getMovies,
@@ -91,5 +103,5 @@ const getMovies = (req, res) => {
     getMovieByYear,
     createGenre,
     getGenreById,
-    getGenreByName,
+    // getGenreByName,
   }
