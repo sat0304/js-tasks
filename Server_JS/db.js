@@ -36,7 +36,7 @@ const getMovies = (req, res) => {
         res.status(200).json(results.rows)
       })
     } else {
-      const releaseYear = parseInt(req.params.releaseYear)
+      const releaseYear = parseInt(req.params.id)
   
       pool.query('SELECT * FROM movie WHERE releaseYear = $1', [releaseYear], (error, results) => {
         if (error) {
